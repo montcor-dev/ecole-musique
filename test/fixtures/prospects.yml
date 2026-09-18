@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person: one
+  source: MyString
+  statut: MyString
+  date_premier_contact: 2026-09-18
+  instrument: MyString
+
+two:
+  person: two
+  source: MyString
+  statut: MyString
+  date_premier_contact: 2026-09-18
+  instrument: MyString

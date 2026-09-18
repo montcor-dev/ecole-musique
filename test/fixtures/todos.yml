@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  person: one
+  due_date: 2026-09-18
+  completed: false
+  completed_at: 2026-09-18 15:39:39
+  keywords: MyString
+
+two:
+  title: MyString
+  description: MyText
+  person: two
+  due_date: 2026-09-18
+  completed: false
+  completed_at: 2026-09-18 15:39:39
+  keywords: MyString
