@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Interactions" %>
+
+<h1>Interactions</h1>
+
+<% if params[:student_id] %>
+  <h2>Echanges avec : <%= Student.find(params[:student_id]).prenom %> <%= Student.find(params[:student_id]).nom %></h2>
+<% end %>
+
+<div id="interactions">
+  <% @interactions.each do |interaction| %>
+    <%= render interaction %>
+    <p>
+    	<%= link_to "Editer cet échange", edit_interaction_path(interaction) %>    	
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Nouvel échange", new_interaction_path %>
+
+<br><br>
+<% if params[:student_id] %>
+	<div>
+		<%= link_to "Retour à la page de l'élève", student_path(params[:student_id]) %>
+	</div>
+<% else %>
+	<div>
+		<%= link_to "Retour à la liste d'élèves", students_path  %>
+	</div>
+<% end %>

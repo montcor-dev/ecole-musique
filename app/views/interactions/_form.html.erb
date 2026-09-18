@@ -1,0 +1,62 @@
+<%= form_with(model: interaction) do |form| %>
+  <% if interaction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(interaction.errors.count, "error") %> prohibited this interaction from being saved:</h2>
+
+      <ul>
+        <% interaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date_interaction, style: "display: block" %>
+    <%= form.datetime_field :date_interaction %>
+  </div>
+
+  <div>
+    <%= form.label :student_id, "Elève", style: "display: block" %>
+    <%= form.collection_select :student_id, Student.order(:nom), :id, lambda { |s| "#{s.prenom} #{s.nom}" } %>
+  </div>
+
+  <div>
+    <%= form.label :moyen, style: "display: block" %>
+    <%= form.text_field :moyen %>
+  </div>
+
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.textarea :note %>
+  </div>
+
+  <div>
+    <%= form.label :suivi_necessaire, style: "display: block" %>
+    <%= form.checkbox :suivi_necessaire %>
+  </div>
+
+  <div>
+    <%= form.label :suivi_delai, style: "display: block" %>
+    <%= form.date_field :suivi_delai %>
+  </div>
+
+  <div>
+    <%= form.label :auteur, style: "display: block" %>
+    <%= form.text_field :auteur %>
+  </div>
+
+  <div>
+    <%= form.label :interaction_type, style: "display: block" %>
+    <%= form.text_field :interaction_type %>
+  </div>
+
+  <div>
+    <%= form.label :annexes, style: "display: block" %>
+    <%= form.text_field :annexes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

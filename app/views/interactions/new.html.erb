@@ -1,0 +1,18 @@
+<% content_for :title, "New interaction" %>
+
+<h1>New interaction</h1>
+
+<%= render "form", interaction: @interaction %>
+
+<br>
+
+<div>
+  <%= link_to "Back to interactions", interactions_path %>
+</div>
+
+<br><br>
+<% if params[:student_id] %>
+	<div>
+	  <%= link_to "Retour à la page de l'élève", student_path(params[:student_id]) %>
+	</div>
+<% end %>

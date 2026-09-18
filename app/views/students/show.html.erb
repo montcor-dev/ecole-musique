@@ -1,0 +1,11 @@
+<h1><%= "#{@student.prenom} #{@student.nom}" %></h1>
+
+<%= link_to "Back", students_path %>
+<br>
+<%= link_to "Edit", edit_student_path(@student) %>
+<br><br>
+<%= button_to "Delete", @student, method: :delete, data: { turbo_confirm: "Are you sure?"} %>
+<br>
+<div>
+  <%= link_to "Voir échanges", interactions_path(student_id: @student.id) %>
+</div>

@@ -1,0 +1,13 @@
+<h1>Students</h1>
+
+<div id="students">
+  <% @students.each do |student| %>
+    <div>
+      <%= link_to "#{student.prenom} #{student.nom}", student_path(student.id) %>
+    </div>
+  <% end %>
+</div>
+<br>
+<div>
+  <%= link_to "New student", new_student_path %>
+</div>

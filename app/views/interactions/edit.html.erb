@@ -1,0 +1,14 @@
+<% content_for :title, "Editing interaction" %>
+
+<h1>Editing interaction</h1>
+
+<%= render "form", interaction: @interaction %>
+
+<br>
+
+<div>
+  <%= link_to "Voir échange", @interaction %> |
+  <%= link_to "Liste d'échanges", interactions_path %>
+  
+  <%= button_to "Effacer cet échange", @interaction, method: :delete %>
+</div>
