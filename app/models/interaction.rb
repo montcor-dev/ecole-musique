@@ -1,3 +1,3 @@
 class Interaction < ApplicationRecord
-  belongs_to :student
+  belongs_to :person, polymorphic: true
 end

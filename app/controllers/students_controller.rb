@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+    @student.build_person
   end
 
   def show
@@ -14,14 +15,15 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      redirect_to @student
+      redirect_to @student, notice: "Student created successfully!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def edit
     @student = Student.find(params[:id])
+    @student.build_person unless @student.person  # Ensure person existsf
   end
 
   def update
@@ -41,7 +43,10 @@ class StudentsController < ApplicationController
 
   private
 
-  def student_params
-    params.expect(student: [ :prenom, :nom, :email ])
-  end
+def student_params
+  params.expect(student: [
+    :niveau, :date_premier_contact, :date_inscription, :date_fin, :statut, :style, :instrument, :source, :teacher_id,
+    person_attributes: [ :titre, :formule, :tutoiement, :prenom, :nom, :adresse, :cp, :lieu, :telephone, :telephone_2, :email, :date_naissance, :a_propos ]
+  ])
+end
 end

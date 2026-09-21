@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_18_133939) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_21_163412) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,11 +22,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_18_133939) do
     t.string "interaction_type"
     t.string "moyen"
     t.text "note"
-    t.bigint "student_id", null: false
+    t.bigint "person_id", null: false
+    t.string "person_type", null: false
     t.date "suivi_delai"
     t.boolean "suivi_necessaire"
     t.datetime "updated_at", null: false
-    t.index ["student_id"], name: "index_interactions_on_student_id"
+    t.index ["person_id", "person_type"], name: "index_interactions_on_person_id_and_person_type"
   end
 
   create_table "people", force: :cascade do |t|
@@ -43,27 +44,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_18_133939) do
     t.string "telephone"
     t.string "telephone_2"
     t.string "titre"
+    t.boolean "tutoiement"
     t.datetime "updated_at", null: false
-  end
-
-  create_table "prospects", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.date "date_premier_contact"
-    t.string "instrument"
-    t.bigint "person_id", null: false
-    t.string "source"
-    t.string "statut"
-    t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_prospects_on_person_id"
   end
 
   create_table "students", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.date "date_fin"
     t.date "date_inscription"
+    t.date "date_premier_contact"
     t.string "instrument"
     t.string "niveau"
     t.bigint "person_id"
+    t.string "source"
     t.string "statut"
     t.string "style"
     t.datetime "updated_at", null: false
@@ -95,8 +88,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_18_133939) do
     t.index ["person_id"], name: "index_todos_on_person_id"
   end
 
-  add_foreign_key "interactions", "students"
-  add_foreign_key "prospects", "people"
   add_foreign_key "students", "people"
   add_foreign_key "teachers", "people"
   add_foreign_key "todos", "people"
