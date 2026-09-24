@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  person: one
-  styles: MyText
-  date_debut: 2026-09-18
-  date_fin: 2026-09-18
-  statut: MyString
-  instrument: MyString
+  person: three
+  styles: Classical, Jazz
+  start_date: 2026-09-18
+  end_date:
+  status: MyString
+  instrument: Piano
 
 two:
-  person: two
-  styles: MyText
-  date_debut: 2026-09-18
-  date_fin: 2026-09-18
-  statut: MyString
-  instrument: MyString
+  person: four
+  styles: Classical
+  start_date: 2026-09-18
+  end_date:
+  status: MyString
+  instrument: Violin

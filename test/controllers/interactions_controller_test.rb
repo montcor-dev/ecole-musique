@@ -3,21 +3,30 @@ require "test_helper"
 class InteractionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @interaction = interactions(:one)
+    @student = students(:one)
   end
 
   test "should get index" do
-    get interactions_url
+    get student_interactions_url(@student)
     assert_response :success
   end
 
   test "should get new" do
-    get new_interaction_url
+    get new_student_interaction_url(@student)
     assert_response :success
   end
 
   test "should create interaction" do
     assert_difference("Interaction.count") do
-      post interactions_url, params: { interaction: { annexes: @interaction.annexes, auteur: @interaction.auteur, date_interaction: @interaction.date_interaction, interaction_type: @interaction.interaction_type, moyen: @interaction.moyen, note: @interaction.note, student_id: @interaction.student_id, suivi_delai: @interaction.suivi_delai, suivi_necessaire: @interaction.suivi_necessaire } }
+      post student_interactions_url(@student), params: {
+        interaction: {
+          interaction_date: @interaction.interaction_date,
+          interaction_type: @interaction.interaction_type,
+          note: @interaction.note,
+          follow_up_needed: @interaction.follow_up_needed,
+          follow_up_due_date: @interaction.follow_up_due_date
+        }
+      }
     end
 
     assert_redirected_to interaction_url(Interaction.last)
@@ -34,7 +43,15 @@ class InteractionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update interaction" do
-    patch interaction_url(@interaction), params: { interaction: { annexes: @interaction.annexes, auteur: @interaction.auteur, date_interaction: @interaction.date_interaction, interaction_type: @interaction.interaction_type, moyen: @interaction.moyen, note: @interaction.note, student_id: @interaction.student_id, suivi_delai: @interaction.suivi_delai, suivi_necessaire: @interaction.suivi_necessaire } }
+    patch interaction_url(@interaction), params: {
+      interaction: {
+        interaction_date: @interaction.interaction_date,
+        interaction_type: @interaction.interaction_type,
+        note: @interaction.note,
+        follow_up_needed: @interaction.follow_up_needed,
+        follow_up_due_date: @interaction.follow_up_due_date
+      }
+    }
     assert_redirected_to interaction_url(@interaction)
   end
 
@@ -43,6 +60,6 @@ class InteractionsControllerTest < ActionDispatch::IntegrationTest
       delete interaction_url(@interaction)
     end
 
-    assert_redirected_to interactions_url
+    assert_redirected_to student_interactions_url(@student)
   end
 end

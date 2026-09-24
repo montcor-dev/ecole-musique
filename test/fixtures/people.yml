@@ -1,29 +1,61 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  titre: MyString
-  prenom: MyString
-  nom: MyString
-  formule: MyString
-  adresse: MyString
-  cp: MyString
-  lieu: MyString
-  telephone: MyString
-  telephone_2: MyString
-  email: MyString
-  date_naissance: 2026-09-18
-  a_propos: MyText
+  title: M.
+  first_name: Jean
+  last_name: Dupont
+  greeting_formula: first_name_tu
+  address: 12 rue de la Paix
+  postal_code: "75002"
+  city: Paris
+  phone: "0102030405"
+  phone_2: "0607080910"
+  email: jean.dupont@example.com
+  date_of_birth: 1990-05-12
+  about_me: MyText
+  use_tu: true
 
 two:
-  titre: MyString
-  prenom: MyString
-  nom: MyString
-  formule: MyString
-  adresse: MyString
-  cp: MyString
-  lieu: MyString
-  telephone: MyString
-  telephone_2: MyString
-  email: MyString
-  date_naissance: 2026-09-18
-  a_propos: MyText
+  title: Mme
+  first_name: Claire
+  last_name: Martin
+  greeting_formula: title_last_name_vous
+  address: 5 avenue Victor Hugo
+  postal_code: "69001"
+  city: Lyon
+  phone: "0611223344"
+  phone_2: ""
+  email: claire.martin@example.com
+  date_of_birth: 1985-11-03
+  about_me: MyText
+  use_tu: false
+
+three:
+  title: M.
+  first_name: Marc
+  last_name: Petit
+  greeting_formula: first_name_vous
+  address: 8 boulevard Saint-Michel
+  postal_code: "13001"
+  city: Marseille
+  phone: "0499887766"
+  phone_2: ""
+  email: marc.petit@example.com
+  date_of_birth: 1978-02-20
+  about_me: MyText
+  use_tu: false
+
+four:
+  title: Mme
+  first_name: Sophie
+  last_name: Bernard
+  greeting_formula: first_name_tu
+  address: 22 rue des Fleurs
+  postal_code: "31000"
+  city: Toulouse
+  phone: "0533445566"
+  phone_2: ""
+  email: sophie.bernard@example.com
+  date_of_birth: 1992-07-15
+  about_me: MyText
+  use_tu: true

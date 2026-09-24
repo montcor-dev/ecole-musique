@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
 
   def edit
     @student = Student.find(params[:id])
-    @student.build_person unless @student.person  # Ensure person existsf
+    @student.build_person unless @student.person  # Ensure person exists
   end
 
   def update
@@ -45,8 +45,8 @@ class StudentsController < ApplicationController
 
 def student_params
   params.expect(student: [
-    :niveau, :date_premier_contact, :date_inscription, :date_fin, :statut, :style, :instrument, :source, :teacher_id,
-    person_attributes: [ :titre, :formule, :tutoiement, :prenom, :nom, :adresse, :cp, :lieu, :telephone, :telephone_2, :email, :date_naissance, :a_propos ]
+    :level, :first_contact_date, :enrollment_date, :end_date, :status, :style, :instrument, :source, :teacher_id,
+    person_attributes: [ :title, :greeting_formula, :use_tu, :first_name, :last_name, :address, :postal_code, :city, :phone, :phone_2, :email, :date_of_birth, :about_me ]
   ])
 end
 end

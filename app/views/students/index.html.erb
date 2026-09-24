@@ -3,7 +3,7 @@
 <div id="students">
   <% @students.each do |student| %>
     <div>
-      <%= link_to "#{student.person.prenom} #{student.person.nom}", student_path(student.id) %>
+      <%= link_to "#{student.person.first_name} #{student.person.last_name}", student_path(student.id) %>
     </div>
   <% end %>
 </div>

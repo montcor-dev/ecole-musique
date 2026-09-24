@@ -1,8 +1,9 @@
-<%= form_with(model: interaction) do |form| %>
+<%= form_with model: interaction,
+      url: (interaction.persisted? ? interaction_path(interaction) : polymorphic_path([owner, :interactions])),
+      local: true do |form| %>
   <% if interaction.errors.any? %>
-    <div style="color: red">
+    <div>
       <h2><%= pluralize(interaction.errors.count, "error") %> prohibited this interaction from being saved:</h2>
-
       <ul>
         <% interaction.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,48 +13,28 @@
   <% end %>
 
   <div>
-    <%= form.label :date_interaction, style: "display: block" %>
-    <%= form.datetime_field :date_interaction %>
+    <%= form.label :interaction_date %>
+    <%= form.date_field :interaction_date %>
   </div>
 
   <div>
-    <%= form.label :student_id, "Elève", style: "display: block" %>
-    <%= form.collection_select :student_id, Student.order(:nom), :id, lambda { |s| "#{s.prenom} #{s.nom}" } %>
+    <%= form.label :interaction_type %>
+    <%= form.select :interaction_type, Interaction.interaction_types.keys.map { |k| [k.humanize, k] } %>
   </div>
 
   <div>
-    <%= form.label :moyen, style: "display: block" %>
-    <%= form.text_field :moyen %>
+    <%= form.label :note %>
+    <%= form.text_area :note %>
   </div>
 
   <div>
-    <%= form.label :note, style: "display: block" %>
-    <%= form.textarea :note %>
+    <%= form.check_box :follow_up_needed %>
+    <%= form.label :follow_up_needed %>
   </div>
 
   <div>
-    <%= form.label :suivi_necessaire, style: "display: block" %>
-    <%= form.checkbox :suivi_necessaire %>
-  </div>
-
-  <div>
-    <%= form.label :suivi_delai, style: "display: block" %>
-    <%= form.date_field :suivi_delai %>
-  </div>
-
-  <div>
-    <%= form.label :auteur, style: "display: block" %>
-    <%= form.text_field :auteur %>
-  </div>
-
-  <div>
-    <%= form.label :interaction_type, style: "display: block" %>
-    <%= form.text_field :interaction_type %>
-  </div>
-
-  <div>
-    <%= form.label :annexes, style: "display: block" %>
-    <%= form.text_field :annexes %>
+    <%= form.label :follow_up_due_date %>
+    <%= form.date_field :follow_up_due_date %>
   </div>
 
   <div>

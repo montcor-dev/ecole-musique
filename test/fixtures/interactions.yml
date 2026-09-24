@@ -1,23 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date_interaction: 2026-09-17 11:12:01
-  student: one
-  moyen: MyString
+  person: one
+  interaction_date: 2026-09-17 11:12:01
   note: MyText
-  suivi_necessaire: false
-  suivi_delai: 2026-09-17
-  auteur: MyString
-  interaction_type: MyString
-  annexes: MyString
+  follow_up_needed: false
+  follow_up_due_date: 2026-09-17
+  interaction_type: phone
 
 two:
-  date_interaction: 2026-09-17 11:12:01
-  student: two
-  moyen: MyString
+  person: two
+  interaction_date: 2026-09-17 11:12:01
   note: MyText
-  suivi_necessaire: false
-  suivi_delai: 2026-09-17
-  auteur: MyString
-  interaction_type: MyString
-  annexes: MyString
+  follow_up_needed: false
+  follow_up_due_date: 2026-09-17
+  interaction_type: email

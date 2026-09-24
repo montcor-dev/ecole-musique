@@ -1,31 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<h1>Interactions<%= " for #{@person.full_name}" if @person %></h1>
 
-<% content_for :title, "Interactions" %>
-
-<h1>Interactions</h1>
-
-<% if params[:student_id] %>
-  <h2>Echanges avec : <%= Student.find(params[:student_id]).prenom %> <%= Student.find(params[:student_id]).nom %></h2>
+<% if @owner %>
+  <%= link_to "New Interaction", polymorphic_path([@owner, :interactions], action: :new) %>
 <% end %>
 
-<div id="interactions">
-  <% @interactions.each do |interaction| %>
-    <%= render interaction %>
-    <p>
-    	<%= link_to "Editer cet échange", edit_interaction_path(interaction) %>    	
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "Nouvel échange", new_interaction_path %>
-
-<br><br>
-<% if params[:student_id] %>
-	<div>
-		<%= link_to "Retour à la page de l'élève", student_path(params[:student_id]) %>
-	</div>
-<% else %>
-	<div>
-		<%= link_to "Retour à la liste d'élèves", students_path  %>
-	</div>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Note</th>
+      <th>Follow-up needed</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @interactions.each do |interaction| %>
+      <tr>
+        <td><%= interaction.interaction_date %></td>
+        <td><%= interaction.interaction_type.humanize %></td>
+        <td><%= truncate(interaction.note.to_s, length: 60) %></td>
+        <td><%= interaction.follow_up_needed? ? "Yes" : "No" %></td>
+        <td><%= link_to "View", interaction %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,32 +1,33 @@
+# app/controllers/interactions_controller.rb
 class InteractionsController < ApplicationController
   before_action :set_interaction, only: %i[ show edit update destroy ]
+  before_action :set_person, only: %i[ index new create ]
 
-  # GET /interactions or /interactions.json
+  # GET /students/1/interactions or /teachers/1/interactions
   def index
-    # @interactions = Interaction.all
-    if params[:student_id]
-      @interactions = Interaction.where(student_id: params[:student_id]).order(date_interaction: :desc)
+    @interactions = if @person
+                      @person.interactions.order(interaction_date: :desc)
     else
-      @interactions = Interaction.all.order(date_interaction: :desc)
+                      Interaction.all.order(interaction_date: :desc)
     end
   end
 
-  # GET /interactions/1 or /interactions/1.json
+  # GET /interactions/1
   def show
   end
 
-  # GET /interactions/new
+  # GET /students/1/interactions/new
   def new
-    @interaction = Interaction.new
+    @interaction = @person.interactions.new
   end
 
   # GET /interactions/1/edit
   def edit
   end
 
-  # POST /interactions or /interactions.json
+  # POST /students/1/interactions
   def create
-    @interaction = Interaction.new(interaction_params)
+    @interaction = @person.interactions.new(interaction_params)
 
     respond_to do |format|
       if @interaction.save
@@ -39,7 +40,7 @@ class InteractionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /interactions/1 or /interactions/1.json
+  # PATCH/PUT /interactions/1
   def update
     respond_to do |format|
       if @interaction.update(interaction_params)
@@ -52,7 +53,7 @@ class InteractionsController < ApplicationController
     end
   end
 
-  # DELETE /interactions/1 or /interactions/1.json
+  # DELETE /interactions/1
   def destroy
     @interaction.destroy!
 
@@ -63,13 +64,21 @@ class InteractionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_interaction
-      @interaction = Interaction.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def interaction_params
-      params.expect(interaction: [ :date_interaction, :student_id, :moyen, :note, :suivi_necessaire, :suivi_delai, :auteur, :interaction_type, :annexes ])
+  def set_interaction
+    @interaction = Interaction.find(params.expect(:id))
+  end
+
+  # Resolve @person from whichever nested route we came through.
+  def set_person
+    @person = if params[:student_id]
+                Student.find(params[:student_id]).person
+    elsif params[:teacher_id]
+                Teacher.find(params[:teacher_id]).person
     end
+  end
+
+  def interaction_params
+    params.expect(interaction: [ :interaction_date, :note, :follow_up_needed, :follow_up_due_date, :interaction_type ])
+  end
 end

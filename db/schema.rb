@@ -10,54 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_21_163412) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_23_104625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "interactions", force: :cascade do |t|
-    t.string "annexes"
-    t.string "auteur"
     t.datetime "created_at", null: false
-    t.datetime "date_interaction"
-    t.string "interaction_type"
-    t.string "moyen"
+    t.date "follow_up_due_date"
+    t.boolean "follow_up_needed", default: false
+    t.date "interaction_date"
+    t.integer "interaction_type"
     t.text "note"
     t.bigint "person_id", null: false
-    t.string "person_type", null: false
-    t.date "suivi_delai"
-    t.boolean "suivi_necessaire"
     t.datetime "updated_at", null: false
-    t.index ["person_id", "person_type"], name: "index_interactions_on_person_id_and_person_type"
+    t.index ["person_id"], name: "index_interactions_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
-    t.text "a_propos"
-    t.string "adresse"
-    t.string "cp"
+    t.text "about_me"
+    t.string "address"
+    t.string "city"
     t.datetime "created_at", null: false
-    t.date "date_naissance"
+    t.date "date_of_birth"
     t.string "email"
-    t.string "formule"
-    t.string "lieu"
-    t.string "nom"
-    t.string "prenom"
-    t.string "telephone"
-    t.string "telephone_2"
-    t.string "titre"
-    t.boolean "tutoiement"
+    t.string "first_name"
+    t.string "greeting_formula"
+    t.string "last_name"
+    t.string "phone"
+    t.string "phone_2"
+    t.string "postal_code"
+    t.string "title"
     t.datetime "updated_at", null: false
+    t.boolean "use_tu"
   end
 
   create_table "students", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.date "date_fin"
-    t.date "date_inscription"
-    t.date "date_premier_contact"
+    t.date "end_date"
+    t.date "enrollment_date"
+    t.date "first_contact_date"
     t.string "instrument"
-    t.string "niveau"
+    t.string "level"
     t.bigint "person_id"
     t.string "source"
-    t.string "statut"
+    t.string "status"
     t.string "style"
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_students_on_person_id"
@@ -65,11 +61,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_163412) do
 
   create_table "teachers", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.date "date_debut"
-    t.date "date_fin"
+    t.date "end_date"
     t.string "instrument"
     t.bigint "person_id", null: false
-    t.string "statut"
+    t.date "start_date"
+    t.string "status"
     t.text "styles"
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_teachers_on_person_id"
@@ -88,6 +84,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_163412) do
     t.index ["person_id"], name: "index_todos_on_person_id"
   end
 
+  add_foreign_key "interactions", "people"
   add_foreign_key "students", "people"
   add_foreign_key "teachers", "people"
   add_foreign_key "todos", "people"

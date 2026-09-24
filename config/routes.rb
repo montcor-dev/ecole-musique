@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :interactions
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,8 +9,16 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  resources :students
-  resources :interactions
+  resources :students do
+    resources :interactions, only: [ :index, :new, :create ]
+  end
+
+  resources :teachers do
+    resources :interactions, only: [ :index, :new, :create ]
+  end
+
+# top-level for actions that don't need the parent in the URL
+resources :interactions, only: [ :show, :edit, :update, :destroy ]
 
   # Defines the root path route ("/")
   root to: "students#index"

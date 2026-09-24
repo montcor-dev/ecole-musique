@@ -3,53 +3,53 @@
     <!-- Person fields -->
     <%= form.fields_for :person do |person_fields| %>
       <div>
-        <%= person_fields.label :titre %>
-        <%= person_fields.text_field :titre %>
+        <%= person_fields.label :title %>
+        <%= person_fields.text_field :title %>
       </div>
 
       <div>
-        <%= person_fields.label :formule %>
-        <%= person_fields.text_field :formule %>
+        <%= person_fields.label :greeting_formula %>
+        <%= person_fields.text_field :greeting_formula %>
       </div>
 
       <div>
-        <%= person_fields.label :tutoiement, "Tutoiement (coché = tu, décoché = vous) " %>
-        <%= person_fields.check_box :tutoiement %>
+        <%= person_fields.label :use_tu, "Tutoiement (coché = tu, décoché = vous) " %>
+        <%= person_fields.check_box :use_tu %>
       </div>
 
       <div>
-        <%= person_fields.label :prenom %>
-        <%= person_fields.text_field :prenom %>
+        <%= person_fields.label :first_name %>
+        <%= person_fields.text_field :first_name %>
       </div>
 
       <div>
-        <%= person_fields.label :nom %>
-        <%= person_fields.text_field :nom %>
+        <%= person_fields.label :last_name %>
+        <%= person_fields.text_field :last_name %>
       </div>
 
       <div>
-        <%= person_fields.label :adresse %>
-        <%= person_fields.text_field :adresse %>
+        <%= person_fields.label :address %>
+        <%= person_fields.text_field :address %>
       </div>
 
       <div>
-        <%= person_fields.label :cp %>
-        <%= person_fields.text_field :cp %>
+        <%= person_fields.label :postal_code %>
+        <%= person_fields.text_field :postal_code %>
       </div>
 
       <div>
-        <%= person_fields.label :lieu %>
-        <%= person_fields.text_field :lieu %>
+        <%= person_fields.label :city %>
+        <%= person_fields.text_field :city %>
       </div>
 
       <div>
-        <%= person_fields.label :telephone %>
-        <%= person_fields.text_field :telephone %>
+        <%= person_fields.label :phone %>
+        <%= person_fields.text_field :phone %>
       </div>
 
       <div>
-        <%= person_fields.label :telephone_2 %>
-        <%= person_fields.text_field :telephone_2 %>
+        <%= person_fields.label :phone_2 %>
+        <%= person_fields.text_field :phone_2 %>
       </div>
 
       <div>
@@ -58,20 +58,20 @@
       </div>
 
       <div>
-        <%= person_fields.label :date_naissance %>
-        <%= person_fields.date_field :date_naissance %>
+        <%= person_fields.label :date_of_birth %>
+        <%= person_fields.date_field :date_of_birth %>
       </div>
 
       <div>
-        <%= person_fields.label :a_propos %>
-        <%= person_fields.text_field :a_propos %>
+        <%= person_fields.label :about_me %>
+        <%= person_fields.text_field :about_me %>
       </div>
     <% end %>
  
     <!-- Student-specific fields -->
       <div>
-        <%= form.label :niveau %>
-        <%= form.text_field :niveau %>
+        <%= form.label :level %>
+        <%= form.text_field :level %>
       </div>
 
       <div>
@@ -80,23 +80,23 @@
       </div>
 
       <div>
-        <%= form.label :date_premier_contact %>
-        <%= form.date_field :date_premier_contact %>
+        <%= form.label :first_contact_date %>
+        <%= form.date_field :first_contact_date %>
       </div>
 
       <div>
-        <%= form.label :date_inscription %>
-        <%= form.date_field :date_inscription %>
+        <%= form.label :enrollment_date %>
+        <%= form.date_field :enrollment_date %>
       </div>
 
       <div>
-        <%= form.label :date_fin %>
-        <%= form.date_field :date_fin %>
+        <%= form.label :end_date %>
+        <%= form.date_field :end_date %>
       </div>
 
       <div>
-        <%= form.label :statut %>
-        <%= form.text_field :statut %>
+        <%= form.label :status %>
+        <%= form.text_field :status %>
       </div>
 
       <div>
@@ -111,7 +111,7 @@
     
     <%= form.submit %>
 
-
+<!-- for debugging -->
   <% if student.errors.any? %>
   <div class="errors">
     <h2><%= pluralize(student.errors.count, "error") %></h2>
@@ -122,6 +122,7 @@
     </ul>
   </div>
 <% end %>
+<!-- for debugging -->
 
     
 <%end%>

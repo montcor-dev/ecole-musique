@@ -5,7 +5,7 @@ class Student < ApplicationRecord
 
   accepts_nested_attributes_for :person
 
-  validates :statut, inclusion: {
+  validates :status, inclusion: {
     in: %w[prospect actif en_pause ancien],
     message: "Doit être prospect, actif, en_pause ou ancien"
   }
