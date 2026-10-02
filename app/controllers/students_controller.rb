@@ -31,7 +31,7 @@ class StudentsController < ApplicationController
     if @student.update(student_params)
       redirect_to @student
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -41,12 +41,19 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
+  # Optional: soft-delete students (mark as "ancien")
+  # def destroy
+  #   @student = Student.find(params[:id])
+  #   @student.update(status: "ancien")  # Soft-delete instead of destroy
+  #   redirect_to students_path, notice: "Student marked as ancien."
+  # end
+
   private
 
 def student_params
   params.expect(student: [
     :level, :first_contact_date, :enrollment_date, :end_date, :status, :style, :instrument, :source, :teacher_id,
-    person_attributes: [ :title, :greeting_formula, :use_tu, :first_name, :last_name, :address, :postal_code, :city, :phone, :phone_2, :email, :date_of_birth, :about_me ]
+    person_attributes: [ :id, :title, :greeting_formula, :use_tu, :first_name, :last_name, :address, :postal_code, :city, :phone, :phone_2, :email, :date_of_birth, :about_me ]
   ])
 end
 end

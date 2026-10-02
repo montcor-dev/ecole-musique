@@ -7,5 +7,5 @@
 <%= button_to "Delete", @student, method: :delete, data: { turbo_confirm: "Are you sure?"} %>
 <br>
 <div>
-  <%= link_to "Voir échanges", student_interactions_path(student_id: @student.person.id) %>
+  <%= link_to "Voir échanges", student_interactions_path(@student) %>
 </div>

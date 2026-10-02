@@ -10,15 +10,15 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   resources :students do
-    resources :interactions, only: [ :index, :new, :create ]
+    resources :interactions
   end
 
   resources :teachers do
-    resources :interactions, only: [ :index, :new, :create ]
+    resources :interactions
   end
 
-# top-level for actions that don't need the parent in the URL
-resources :interactions, only: [ :show, :edit, :update, :destroy ]
+  # top-level for actions that don't need the parent in the URL
+  resources :interactions, only: [ :index ]
 
   # Defines the root path route ("/")
   root to: "students#index"

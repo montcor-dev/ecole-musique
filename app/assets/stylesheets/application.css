@@ -8,3 +8,17 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/******************************************/
+/* The whole layer stack will eventually be:
+
+@layer reset, tokens, base, composition, components, utilities, overrides;
+
+But for now, we just start with the first three */
+
+
+@layer reset, tokens, base;
+
+@import "reset.css" layer(reset);
+@import "tokens.css" layer(tokens);
+@import "base.css" layer(base);

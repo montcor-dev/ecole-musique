@@ -21,8 +21,13 @@
         <td><%= interaction.interaction_type.humanize %></td>
         <td><%= truncate(interaction.note.to_s, length: 60) %></td>
         <td><%= interaction.follow_up_needed? ? "Yes" : "No" %></td>
-        <td><%= link_to "View", interaction %></td>
+        <td><%= link_to "View", [@student || @teacher, interaction] %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+ 
+<br>
+<div>
+  <%= link_to "New interaction", new_student_interaction_path(@student) %>
+</div>

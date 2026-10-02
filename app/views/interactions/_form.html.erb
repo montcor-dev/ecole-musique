@@ -1,6 +1,7 @@
-<%= form_with model: interaction,
-      url: (interaction.persisted? ? interaction_path(interaction) : polymorphic_path([owner, :interactions])),
-      local: true do |form| %>
+<%# Determine the owner (student or teacher) for nested routing %>
+<% owner = @student || @teacher %>
+
+<%= form_with model: [owner, interaction], local: true do |form| %>
   <% if interaction.errors.any? %>
     <div>
       <h2><%= pluralize(interaction.errors.count, "error") %> prohibited this interaction from being saved:</h2>

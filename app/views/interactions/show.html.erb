@@ -8,7 +8,7 @@
   <p><strong>Follow-up by:</strong> <%= @interaction.follow_up_due_date %></p>
 <% end %>
 
-<%= link_to "Edit", edit_interaction_path(@interaction) %>
-<%= button_to "Delete", interaction_path(@interaction), method: :delete %>
+<%= link_to "Edit", edit_student_interaction_path(@student, @interaction) %>
+<%= button_to "Delete", student_interaction_path(@student, @interaction), method: :delete %>
 <br>
-<%= link_to "Back", polymorphic_path([@interaction.person.role_record, :interactions]) %>
+<%= link_to "Back", [@student || @teacher, :interactions] %>
