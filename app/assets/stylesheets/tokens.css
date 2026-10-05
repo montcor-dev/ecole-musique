@@ -15,7 +15,7 @@
   --color-text: #ffffff;
   --color-text-muted: #6b7280;
   --color-border: #e5e7eb;
-  --color-background: #5f7995;
+  --color-background: rgb(95, 122, 149);
   --color-background-alt: #2c3744;
   
   /* Spacing scale */

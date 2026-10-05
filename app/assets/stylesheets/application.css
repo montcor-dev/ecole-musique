@@ -17,8 +17,9 @@
 But for now, we just start with the first three */
 
 
-@layer reset, tokens, base;
+@layer reset, tokens, base, components;
 
 @import "reset.css" layer(reset);
 @import "tokens.css" layer(tokens);
 @import "base.css" layer(base);
+@import "components.css" layer(components);

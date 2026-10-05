@@ -1,0 +1,48 @@
+/* app/assets/stylesheets/components.css */
+@layer components {
+
+  .student-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .student-list__name a:hover {
+    text-decoration: none !important;
+  }
+
+  .student-list__item {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 1fr;
+    align-items: center;
+    padding: 0.75rem 0rem;
+    border-bottom: 1px solid var(--color-border, #e0e0e0);
+    gap: 1rem;
+  }
+
+  .student-list__item:hover {
+    background-color: color-mix(var(--color-background), black 10%);
+  }
+
+  .student-list__contact {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .student-list__email,
+  .student-list__phone,
+  .student-list__address {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Mobile: stack vertically */
+  @media (max-width: 768px) {
+    .student-list__item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+  
+}
