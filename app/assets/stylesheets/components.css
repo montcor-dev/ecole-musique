@@ -13,6 +13,7 @@
 
   .student-list__link:hover {
     background-color: color-mix(var(--color-background), black 10%);
+    color: black;
   }
 
   .student-list__link {
@@ -38,22 +39,5 @@
     justify-items: start;
 
     /* gap: 1.5rem; */
-  }
-
-  .student-list__email,
-  .student-list__phone,
-  .student-list__address {
-    /* display: flex;
-    align-items: center;
-    gap: 0.25rem; */
-  }
-
-  /* Mobile: stack vertically */
-  /* @media (max-width: 768px) {
-    .student-list__item {
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
-  } */
-  
+  }  
 }
