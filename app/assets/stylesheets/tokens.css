@@ -2,7 +2,7 @@
 :root {
   
   /* Status colors */
-  --color-prospect: #hsl(40.6, 55.7%, 76.1%);
+  --color-prospect: hsl(40.6, 55.7%, 76.1%);
   --color-student: hsl(159.6, 24.9%, 37.1%);
   --color-teacher: hsl(223.7, 37.1%, 31.2%);
   --color-urgent: hsl(0, 84.2%, 60.2%);
