@@ -1,9 +1,5 @@
 
 :root {
-  /* Colors - school branding */
-  --color-primary: #ffffff;
-  --color-primary-light: #3b82f6;
-  --color-secondary: #7c3aed;
   
   /* Status colors */
   --color-prospect: #e4cea0;
@@ -11,12 +7,10 @@
   --color-teacher: #32426d;
   --color-urgent: #ef4444;
   
-  /* Neutrals */
+  /* Light */
   --color-text: #ffffff;
-  --color-text-muted: #6b7280;
   --color-border: #e5e7eb;
   --color-background: rgb(95, 122, 149);
-  --color-background-alt: #2c3744;
   
   /* Spacing scale */
   --space-1: 0.25rem;
@@ -36,6 +30,11 @@
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
+
+  --fw-light: 200;
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fw-black: 900;
   
   /* Borders */
   --radius-sm: 0.25rem;

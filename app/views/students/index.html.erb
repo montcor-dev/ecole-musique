@@ -5,21 +5,26 @@
     <% @students.each do |student| %>
       <li class="student-list__item">
 
-        <div class="student-list__name">
-          <%= link_to "#{student.person.first_name} #{student.person.last_name}", student_path(student.id) %>
-        </div>
+        <%= link_to student_path(student), class: "student-list__link" do %>
 
-        <div class="student-list__contact">
-          <span class="student-list__email" title="Email"> <%= "#{student.person.email}" %>
-          </span>
-          <span class="student-list__phone" title="Phone"> <%= "#{student.person.phone}" %>
-          </span>
-          <span class="student-list__address" title="Address">
-          <%= "#{student.person.address}" %>
-          <%= "#{student.person.postal_code}" %>
-          <%= "#{student.person.city}" %>
-          </span>
-        </div>
+          <div class="student-list__name">
+            <%= "#{student.person.first_name} #{student.person.last_name}" %>
+          </div>
+
+          <div class="student-list__contact">
+            <span class="student-list__email" title="Email"> <%= "#{student.person.email}" %>
+            </span>
+            <span class="student-list__phone" title="Phone"> <%= "#{student.person.phone}" %>
+            </span>
+            <span class="student-list__address" title="Address">
+            <%= "#{student.person.address}, " %>
+            <%= "#{student.person.postal_code}" %>
+            <%= "#{student.person.city}" %>
+            </span>
+          </div>
+
+        <% end %>
+
       </li>
     <% end %>
   </ul>

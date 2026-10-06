@@ -8,18 +8,19 @@ body {
 
 h1 {
   font-size: var(--text-2xl);
-  font-weight: 700;
+  font-weight: fw-bold;
   line-height: 1.2;
+  padding-bottom: var(--space-4);
 }
 
 h2 {
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: fw-bold;
 }
 
 h3 {
   font-size: var(--text-lg);
-  font-weight: 600;
+  font-weight: fw-bold;
 }
 
 a {
@@ -28,7 +29,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 ul, ol {
